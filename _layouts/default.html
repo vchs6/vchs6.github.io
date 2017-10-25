@@ -32,7 +32,7 @@
       <div class="logo"></div>
       <div class="mainmenu">
         <ul>
-          <li class="menuitem"><a href="/">首页</a></li>
+          <li class="menuitem"><a href="{{ site.BaseURL }}">首页</a></li>
           {% for category in site.categories %}
           <li class="menuitem">
             <a href="{{ site.BaseURL }}/{{ category | first }}">{{ category | first }}</a>
