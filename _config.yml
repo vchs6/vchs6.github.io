@@ -6,7 +6,7 @@ language: zh-CN
 TimeZone: Asia/Shanghai
 Encoding: utf-8
 
-BaseURL: /
+BaseURL: https://vchs6.github.io
 permalink: /:year/:month/:day/:title
 
 lsi: true
