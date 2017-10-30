@@ -98,8 +98,9 @@ mvn clane install
 cd /pathto/controller/karaf/opendaylight-karaf/target/assembly/bin
 ./karaf
 ```
-启动容器后，可以使用```feature:list[ | grep xxx]```查看所有的features或能与给定字符串匹配的features。
 2. 加载features
+
+启动容器后，可以使用```feature:list[ | grep xxx]```查看所有的features或能与给定字符串匹配的features。
 
 ```
 feature:install odl-restconf
