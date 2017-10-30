@@ -38,7 +38,7 @@ categories: [SDN, OpenDaylight, controller]
 >对netconf（/pathto/controller/opendaylight/netconf/pom.xml），删除或注释(\<!-- 原有标记行   -->)掉features和karaf模块。
 
 ### 2.3. 修改ODL控制器的包管理文件pom.xml
-1. 添加模块
+#### 2.3.1. 添加模块
 
 &emsp;&emsp;在文件/path/controller/pom.xml的moudles节中，逐个添加模块。    
 ```
@@ -46,7 +46,7 @@ categories: [SDN, OpenDaylight, controller]
  ......
 ```
 
-2. 添加features
+#### 2.3.2. 添加features
 
 &emsp;&emsp;在/path/controller/features/pom.xm的moudles节中，逐个添加模块。    
 ```
@@ -92,13 +92,13 @@ mvn clane install
 ## 4. 运行
 
 &emsp;&emsp;在命令终端中，运行karaf，即可启动控制器容器，但并没有全部安装需要的features。
-1. 启动karaf
+### 4.1. 启动karaf
 
 ```
 cd /pathto/controller/karaf/opendaylight-karaf/target/assembly/bin
 ./karaf
 ```
-2. 加载features
+### 4.2. 加载features
 
 启动容器后，可以使用```feature:list[ | grep xxx]```查看所有的features或能与给定字符串匹配的features。
 
