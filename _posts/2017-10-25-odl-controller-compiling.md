@@ -39,18 +39,20 @@ categories: [SDN, OpenDaylight, controller]
 
 ### 2.3. 修改ODL控制器的包管理文件pom.xml
 1. 添加模块
-&emsp;&emsp;在文件/path/controller/pom.xml的moudles节中，逐个添加模块。
+
+&emsp;&emsp;在文件/path/controller/pom.xml的moudles节中，逐个添加模块。    
 ```
 <module>opendaylight/FeatureName</module>    
  ......
- ```
+```
 
 2. 添加features
-&emsp;&emsp;在/path/controller/features/pom.xm的moudles节中，逐个添加模块。
+
+&emsp;&emsp;在/path/controller/features/pom.xm的moudles节中，逐个添加模块。    
 ```
 <module>FeatureName</module>    
 ......
- ```
+```
 
 &emsp;&emsp;__注意：__ 两个文件中的模块添加方式不一样，前者需要加上“opendaylight/FeatureName”，后者则直接使用FeatureName。
 
@@ -67,15 +69,17 @@ categories: [SDN, OpenDaylight, controller]
 	<type>xml</type>
 	<scope>runtime</scope>
 </dependency>
-```
+```    
 其中的classifier、type和scope基本上都是固定的，主要是修改groupId、artifactId和version这三个标记。
 
 ## 3. 源码编译
-&emsp;&emsp;&nbsp;整体编译控制器，打开命令窗口，使用mvn编译即可。
+
+&emsp;&emsp;&nbsp;整体编译控制器，打开命令窗口，使用mvn编译即可。    
 ```
 cd /pathto/controller
 mvn clane install
 ```
+
 &emsp;&emsp;编译时可用的命令行参数：
 
 参数  |  说明
@@ -86,14 +90,17 @@ mvn clane install
 -rf :MoudleName | 从指定模块开始编译
 
 ## 4. 运行
+
 &emsp;&emsp;在命令终端中，运行karaf，即可启动控制器容器，但并没有全部安装需要的features。
 1. 启动karaf
+
 ```
 cd /pathto/controller/karaf/opendaylight-karaf/target/assembly/bin
 ./karaf
 ```
-启动容器后，可以使用feature:list[ | grep xxx]查看所有的features或能与给定字符串匹配的features。
+启动容器后，可以使用```feature:list[ | grep xxx]```查看所有的features或能与给定字符串匹配的features。
 2. 加载features
+
 ```
 feature:install odl-restconf
 feature:install odl-l2switch-switch
@@ -104,6 +111,7 @@ feature:install odl-dluxapps-yangutils
 ```
 
 ## 5. 测试
+
 &emsp;&emsp;启动浏览器，输入```http://IP地址:8181/index.html```，页面正常显示后，以用户名“admin”和密码“admin”登录，即可进入ODL控制器的管理界面。
 
 &emsp;&emsp;如果是其他情况，请注意karaf控制台的输出信息和日志。
