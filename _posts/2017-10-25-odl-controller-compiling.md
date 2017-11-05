@@ -100,7 +100,7 @@ cd /pathto/controller/karaf/opendaylight-karaf/target/assembly/bin
 ```
 ### 4.2. 加载features
 
-启动容器后，可以使用```feature:list[ | grep xxx]```查看所有的features或能与给定字符串匹配的features。
+&emsp;&emsp;启动容器后，可以使用```feature:list[ | grep xxx]```查看所有的features或能与给定字符串匹配的features。
 
 ```
 feature:install odl-restconf
@@ -118,9 +118,10 @@ feature:install odl-dluxapps-yangutils
 &emsp;&emsp;如果是其他情况，请注意karaf控制台的输出信息和日志。
 
 ## 6. 调试OpenDaylight
-&emsp;&emsp;由于不能在IDE中编译和运行OpenDaylight，所以，只能通过远程的方式调试。    
+&emsp;&emsp;由于不能在IDE中编译和运行OpenDaylight，所以，只能通过远程的方式调试。 
+
 &emsp;&emsp;5.1. 启动控制器     
-带debug参数启动OpenDaylight，早期使用的-debug，但从Helium版开始，直接使用debug即可。    
+&emsp;&emsp;带debug参数启动OpenDaylight，早期使用的-debug，但从Helium版开始，直接使用debug即可。    
 ```
 cd \pathto\karafdist\bin
 [./]karaf debug
