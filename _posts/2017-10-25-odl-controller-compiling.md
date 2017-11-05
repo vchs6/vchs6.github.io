@@ -120,8 +120,10 @@ feature:install odl-dluxapps-yangutils
 ## 6. 调试OpenDaylight
 &emsp;&emsp;由于不能在IDE中编译和运行OpenDaylight，所以，只能通过远程的方式调试。 
 
-&emsp;&emsp;5.1. 启动控制器     
-&emsp;&emsp;带debug参数启动OpenDaylight，早期使用的-debug，但从Helium版开始，直接使用debug即可。    
+&emsp;&emsp;5.1. 启动控制器
+
+&emsp;&emsp;带debug参数启动OpenDaylight，早期使用的-debug，但从Helium版开始，直接使用debug即可。
+
 ```
 cd \pathto\karafdist\bin
 [./]karaf debug
@@ -130,4 +132,5 @@ cd \pathto\karafdist\bin
 &emsp;&emsp;注意ODL启动时给出的端口号。
 
 &emsp;&emsp;5.2. 调试工具设置
+
 &emsp;&emsp;Eclipse和Interllij的设置都差不多，都是在运行（Run）的配置中将运行中的OpenDaylight和调试器进行关联，包括远程主机的IP地址和端口（上一步中的），以及配置源代码的位置。
