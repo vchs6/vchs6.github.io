@@ -38,19 +38,21 @@ categories: [SDN, OpenDaylight, controller]
 >对netconf（/pathto/controller/opendaylight/netconf/pom.xml），删除或注释(\<!-- 原有标记行   -->)掉features和karaf模块。
 
 ### 2.3. 修改ODL控制器的包管理文件pom.xml
-1. 添加模块
-&emsp;&emsp;在文件/path/controller/pom.xml的moudles节中，逐个添加模块。
+#### 2.3.1. 添加模块
+
+&emsp;&emsp;在文件/path/controller/pom.xml的moudles节中，逐个添加模块。    
 ```
 <module>opendaylight/FeatureName</module>    
  ......
- ```
+```
 
-2. 添加features
-&emsp;&emsp;在/path/controller/features/pom.xm的moudles节中，逐个添加模块。
+#### 2.3.2. 添加features
+
+&emsp;&emsp;在/path/controller/features/pom.xm的moudles节中，逐个添加模块。    
 ```
 <module>FeatureName</module>    
 ......
- ```
+```
 
 &emsp;&emsp;__注意：__ 两个文件中的模块添加方式不一样，前者需要加上“opendaylight/FeatureName”，后者则直接使用FeatureName。
 
@@ -67,33 +69,39 @@ categories: [SDN, OpenDaylight, controller]
 	<type>xml</type>
 	<scope>runtime</scope>
 </dependency>
-```
+```    
 其中的classifier、type和scope基本上都是固定的，主要是修改groupId、artifactId和version这三个标记。
 
 ## 3. 源码编译
-&emsp;&emsp;&nbsp;整体编译控制器，打开命令窗口，使用mvn编译即可。
+&emsp;&emsp;由于maven-plugin-plugin、karaf-maven-plugin和maven-antrun-plugin这三个插件Eclipse已不集成，所以不能直接在Eclipse中编译OpenDaylight。而且，也不能在IDEA Intellij中编译。因此，只能在终端中使用mvn命令进行编译工作。初次编译会耗费比较长的时间。        
+&emsp;&emsp;&nbsp;整体编译控制器，打开命令窗口，使用mvn编译即可。     
 ```
 cd /pathto/controller
 mvn clane install
 ```
+
 &emsp;&emsp;编译时可用的命令行参数：
 
 参数  |  说明
------- | ------
--DskipTests | 跳过测试
--e | 显示详细的编译错误信息
---settings=/pathto/settings.xml | 指定mvn的工作时使用的配置文件
--rf :MoudleName | 从指定模块开始编译
+|---|---|
+|-D skipTests | 跳过测试|
+|-e | 显示详细的编译错误信息|
+|--settings=/pathto/settings.xml | 指定mvn的工作时使用的配置文件|
+|-rf :MoudleName | 从指定模块开始编译|
 
 ## 4. 运行
+
 &emsp;&emsp;在命令终端中，运行karaf，即可启动控制器容器，但并没有全部安装需要的features。
-1. 启动karaf
+### 4.1. 启动karaf
+
 ```
 cd /pathto/controller/karaf/opendaylight-karaf/target/assembly/bin
 ./karaf
 ```
-启动容器后，可以使用feature:list[ | grep xxx]查看所有的features或能与给定字符串匹配的features。
-2. 加载features
+### 4.2. 加载features
+
+&emsp;&emsp;启动容器后，可以使用```feature:list[ | grep xxx]```查看所有的features或能与给定字符串匹配的features。
+
 ```
 feature:install odl-restconf
 feature:install odl-l2switch-switch
@@ -104,6 +112,25 @@ feature:install odl-dluxapps-yangutils
 ```
 
 ## 5. 测试
+
 &emsp;&emsp;启动浏览器，输入```http://IP地址:8181/index.html```，页面正常显示后，以用户名“admin”和密码“admin”登录，即可进入ODL控制器的管理界面。
 
 &emsp;&emsp;如果是其他情况，请注意karaf控制台的输出信息和日志。
+
+## 6. 调试OpenDaylight
+&emsp;&emsp;由于不能在IDE中编译和运行OpenDaylight，所以，只能通过远程的方式调试。 
+
+### 6.1. 启动控制器
+
+&emsp;&emsp;带debug参数启动OpenDaylight，早期使用的-debug，但从Helium版开始，直接使用debug即可。
+
+```
+cd \pathto\karafdist\bin
+[./]karaf debug
+```
+
+&emsp;&emsp;注意ODL启动时给出的端口号。
+
+### 6.2. 调试工具设置
+
+&emsp;&emsp;Eclipse和Interllij的设置都差不多，都是在运行（Run）的配置中将运行中的OpenDaylight和调试器进行关联，包括远程主机的IP地址和端口（上一步中的），以及配置源代码的位置。
