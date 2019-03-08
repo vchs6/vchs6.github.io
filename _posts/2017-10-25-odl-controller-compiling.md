@@ -84,7 +84,7 @@ mvn clane install
 
 参数  |  说明
 |---|---|
-|-Dmaven.repo.local=pathtomvnrepos | 设置本地仓库的存储位置
+|-Dmaven.repo.local=/pathto/repository | 设置本地仓库的存储位置
 |-D skipTests | 跳过测试|
 |-e | 显示详细的编译错误信息|
 |--settings=/pathto/settings.xml | 指定mvn的工作时使用的配置文件|
