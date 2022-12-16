@@ -1,9 +1,8 @@
 ---
 layout: post
 title: 安装Kubernetes并部署SDN(OVN-KUBE)网络组件
-date: 2022-12-16 10:22:15
-categories: [网络运维]
-tags: [k8s, sdn, ovn-kube]
+date: 2022-12-16
+categories: [k8s, sdn, ovn-kube]
 ---
 
 ## 安装Kubernetes并部署SDN(OVN-KUBE)网络组件
